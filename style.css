@@ -1,3 +1,9 @@
+body{
+    min-width: 420px;
+    max-width: 420px;
+    max-height: 250px;
+}
+
 p{
     color: #119955
 }
