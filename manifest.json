@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "Chrome Extensions Manager",
+	"author": "AM-77",
+    "description": "A smart chrome extensions manager, to manage your extensions directly from any chrome window.",
+    "version": "1.0",
+    "permissions": [
+        "storage",
+        "management"
+    ],
+    "icons": {
+        "16": "images/logo.png",
+        "32": "images/logo.png",
+        "48": "images/logo.png",
+        "64": "images/logo.png",
+        "128": "images/logo.png"
+    },
+    "browser_action": {
+        "default_icon": "images/logo.png",
+        "default_popup": "index.html" 
+    },
+    "short_name": "Extensions Manager"
+}
