@@ -46,6 +46,8 @@
             //icon url
             data.icon_url = data.is_enabled ? enabled_icon_url : disabled_icon_url
 
+            //install type
+            data.install_type = extension.installType
 
             //home link
             if (extension.homepageUrl !== "")
@@ -78,7 +80,7 @@
 
 
             return `
-            <div class="extension" id="${data.id}">
+            <div class="extension ${ data.install_type }" id="${data.id}">
                 <div class="info">
                     <div class="icon">
                         <img src="${ data.icon_url }">

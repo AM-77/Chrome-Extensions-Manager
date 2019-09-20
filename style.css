@@ -4,6 +4,6 @@ body{
     max-height: 250px;
 }
 
-p{
-    color: #119955
+.extension.development{
+    background: #F44E01
 }
