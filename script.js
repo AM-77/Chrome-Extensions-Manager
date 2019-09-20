@@ -13,7 +13,7 @@
             data.name = extension.name
 
             //description
-            data.desc = extension.description
+            data.description = extension.description !== "" ? extension.description : "Unavailable description."
 
             //enabled
             data.is_enabled = extension.enabled
@@ -111,7 +111,6 @@
             chrome.management.setEnabled(extension_id, is_enabled)
 
             let icon_src = document.querySelector(`#${extension_id} .icon img`).src
-            console.log(icon_src);
 
             if (icon_src.slice(0, 4) !== "data") {
                 if (is_enabled) {
@@ -121,14 +120,9 @@
                 }
             }
 
-            console.log(document.querySelector(`#${extension_id} .icon img`).src);
-
         }
 
         chrome.management.getAll((all_extensions) => {
-
-            console.log(all_extensions);
-
 
             let _apps = document.querySelector("div.apps .list"),
                 _extensions = document.querySelector("div.extensions .list"),
