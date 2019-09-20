@@ -5,6 +5,7 @@
     "description": "A smart chrome extensions manager, to manage your extensions directly from any chrome window.",
     "version": "1.0",
     "permissions": [
+        "tabs",
         "management"
     ],
     "icons": {
