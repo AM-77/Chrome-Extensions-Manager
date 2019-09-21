@@ -26,6 +26,22 @@
     box-sizing: border-box
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: #7979793b; 
+    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.25); 
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #12756c;
+    cursor: pointer !important
+}
+
+
 body {
     min-width: 420px;
     max-width: 420px;
