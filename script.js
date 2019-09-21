@@ -2,19 +2,6 @@
     'use strict'
     window.onload = () => {
 
-        var optionsUrl = "chrome://extensions/?id=degkhdegjjliedgahmlobbeoanmhlcpe"
-        document.querySelector("a.linksss").addEventListener("click", () => {
-            chrome.tabs.query({
-                url: optionsUrl
-            }, function () {
-
-                chrome.tabs.create({
-                    url: optionsUrl
-                });
-
-            });
-        })
-
         let extension_to_data = (extension) => {
 
             let data = {}
@@ -69,7 +56,7 @@
             return data
         }
 
-        let data_formatter = (data) => {
+        let data_2_HTML = (data) => {
 
             let links = document.createElement("div")
             links.className = "links"
@@ -164,12 +151,12 @@
                 all_extensions.forEach(extension => {
 
                     if (extension.type === "extension")
-                        _extensions_innerHTML += data_formatter(extension_to_data(extension)).outerHTML
+                        _extensions_innerHTML += data_2_HTML(extension_to_data(extension)).outerHTML
                     else
                     if (extension.type === "theme")
-                        _themes_innerHTML += data_formatter(extension_to_data(extension)).outerHTML
+                        _themes_innerHTML += data_2_HTML(extension_to_data(extension)).outerHTML
                     else
-                        _apps_innerHTML += data_formatter(extension_to_data(extension)).outerHTML
+                        _apps_innerHTML += data_2_HTML(extension_to_data(extension)).outerHTML
 
                 })
 
@@ -212,5 +199,9 @@
         })
 
     }
+
+    chrome.management.onUninstalled.addListener((extension_id) => {
+        document.querySelector("div#" + extension_id).remove()
+    })
 
 })();
