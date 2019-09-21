@@ -1,7 +1,8 @@
 {
     "manifest_version": 2,
     "name": "Chrome Extensions Manager",
-	"author": "AM-77",
+    "author": "AM-77",
+    "homepage_url":"https://github.com/AM-77/Chrome-Extensions-Manager",
     "description": "A smart chrome extensions manager, to manage your extensions directly from any chrome window.",
     "version": "1.0",
     "permissions": [
