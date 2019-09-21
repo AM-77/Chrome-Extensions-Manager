@@ -104,9 +104,21 @@
                         <img src="${ data.icon_url }">
                     </div>
                     <div class="ext_info">
-                        ${ data.name } >> ${ data.version } >>  <input id="${ data.id }" class="checkbox" type="checkbox" ${ data.is_enabled ? 'checked': '' }>
-                        ${ data.description } >> 
-                        ${ data.type } >> 
+                        <div class="head">
+                            <span class="title">${ data.name }</span>
+                            <span class="version">${ data.version }</span>
+                        </div>
+                        <div class="main">
+                            <p>${ data.description }</p>
+                            <div class="enable">
+                                <input id="${ data.id }" class="checkbox ${ data.is_enabled ? 'enabled': 'disabled' }" type="checkbox" ${ data.is_enabled ? 'checked': '' }>
+                            </div>
+                        </div>
+                        <div  class="foot">
+                        <p>
+                            <span class="id"><b>ID:</b> ${ data.id }</span>
+                        </p>
+                        </div>
                     </div>
             `
 
@@ -145,20 +157,33 @@
                 _extensions_innerHTML = "",
                 _themes_innerHTML = "",
                 _apps_innerHTML = ""
+            let extensions_nbr = 0,
+                themes_nbr = 0,
+                apps_nbr = 0
 
             if (all_extensions != null && all_extensions.length > 0) {
 
                 all_extensions.forEach(extension => {
 
-                    if (extension.type === "extension")
+                    if (extension.type === "extension") {
+                        extensions_nbr++
                         _extensions_innerHTML += data_2_HTML(extension_to_data(extension)).outerHTML
-                    else
-                    if (extension.type === "theme")
-                        _themes_innerHTML += data_2_HTML(extension_to_data(extension)).outerHTML
-                    else
-                        _apps_innerHTML += data_2_HTML(extension_to_data(extension)).outerHTML
+                    } else {
+                        if (extension.type === "theme") {
+                            themes_nbr++
+                            _themes_innerHTML += data_2_HTML(extension_to_data(extension)).outerHTML
+                        } else {
+                            apps_nbr++
+                            _apps_innerHTML += data_2_HTML(extension_to_data(extension)).outerHTML
+                        }
+                    }
+
 
                 })
+
+                document.querySelector(".extensions_nbr").innerHTML = extensions_nbr
+                document.querySelector(".themes_nbr").innerHTML = themes_nbr
+                document.querySelector(".apps_nbr").innerHTML = apps_nbr
 
                 if (_extensions_innerHTML !== "")
                     _extensions.innerHTML = _extensions_innerHTML
@@ -172,6 +197,14 @@
                 document.querySelectorAll("div.ext_info .checkbox").forEach(checkbox => {
                     checkbox.addEventListener("change", function () {
                         enable_extension(this.id, this.checked)
+                        if (this.classList.contains("enabled")) {
+                            this.classList.remove("enabled")
+                            this.classList.add("disabled")
+                        } else {
+                            this.classList.add("enabled")
+                            this.classList.remove("disabled")
+                        }
+
                     })
                 })
 
