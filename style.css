@@ -1,9 +1,297 @@
-body{
+@font-face {
+    font-family: 'ropa sans';
+    src: url("./assets/RopaSans-Regular.ttf") format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-decoration: inherit;
+    text-transform: none;
+}
+
+@font-face {
+    font-family: 'source sans pro';
+    src: url("./assets/SourceSansPro-Regular.ttf") format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-decoration: inherit;
+    text-transform: none;
+}
+
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
     min-width: 420px;
     max-width: 420px;
     max-height: 250px;
+    font-family: 'source sans pro', Helvetica, sans-serif;
+    background: #F8F9FA
 }
 
-.extension.development{
-    background: #F44E01
+h5{
+    padding: 10px;
+    font-size: 21px;
+    font-family: 'ropa sans', Helvetica, sans-serif;
+    color: #12756c;
+    text-transform: uppercase;
+}
+
+
+.list .extension,
+.list .empty {
+    display: block;
+    width: 96%;
+    height: 150px;
+    background: #FFFFFF;
+    margin: 10px auto;
+    border: 1px solid #FFFFFF;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0px 1px 2px 1px #8a8a8ad1
+}
+
+.list .empty {
+    height: 45px;
+    font-size: 21px;
+    text-align: center;
+    font-family: 'ropa sans', Helvetica, sans-serif;
+    color: #212121;
+    line-height: 2
+}
+
+.list .extension.development {
+    background: #ff57224a;
+    border: 1px solid #ff57225e;
+}
+
+.list .extension .inofs {
+    display: block;
+    width: 100%;
+    height: 110px;
+    overflow: hidden;
+    position: relative;
+}
+
+.list .extension .inofs .icon {
+    display: block;
+    width: 70px;
+    height: 100%;
+    overflow: hidden;
+    padding: 15px 0px 0px 10px;
+    float: left;
+}
+
+.list .extension .inofs .icon img {
+    display: block;
+    width: 100%;
+}
+
+.list .extension .inofs .ext_info {
+    display: block;
+    width: calc(100% - 70px);
+    float: right;
+    padding: 10px;
+}
+
+.list .extension .inofs .ext_info .head .title{
+    font-size: 16px;
+    font-family: 'ropa sans', 'source sans pro', Helvetica, sans-serif;
+    color: #12756c
+}
+.list .extension .inofs .ext_info .head .version{
+    font-family: 'source sans pro', Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    float: right;
+    color: #0d776d96;
+    position: absolute;
+    right: 10px;
+}
+
+.list .extension .inofs .ext_info .main p{
+    display: block;
+    width: 90%;
+    font-size: 13px;
+    font-family: 'source sans pro', Helvetica, sans-serif;
+    float: left;
+    padding: 7px 7px 7px 0px;
+    color: #212121bd
+}
+
+.list .extension .inofs .ext_info .main .enable{
+    display: block;
+    width: 10%;
+    height: 50px;
+    position: relative;
+    top: 40px;
+    float: left;
+}
+
+.list .extension .inofs .ext_info .foot{
+    display: block;
+    position: absolute;
+    bottom: 5px;
+}
+
+.list .extension .inofs .ext_info .main input[type="checkbox"]{
+    display: block;
+    width: 100% !important;
+    cursor: pointer;
+}
+
+.list .extension .inofs .ext_info .main input[type="checkbox"]:before{
+    display: block;
+    content: "";
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    background: #BDC0C7;
+    position: absolute;
+}
+
+.list .extension .inofs .ext_info .main input[type="checkbox"]:checked:before{
+    background: #69B1A9;
+}
+
+.list .extension .inofs .ext_info .main input[type="checkbox"].enabled:before{
+    animation: enable_before 100ms ease-in forwards running
+}
+
+@keyframes enable_before{
+    0%{
+        background: #BDC0C7;
+    }
+    100%{
+       background: #69B1A9; 
+    }  
+}
+
+.list .extension .inofs .ext_info .main input[type="checkbox"].disabled:before{
+    animation: disable_before 100ms ease-in forwards running
+}
+
+@keyframes disable_before{
+    0%{
+       background: #69B1A9;
+    }
+    100%{
+       background: #BDC0C7;
+    }  
+}
+
+.list .extension .inofs .ext_info .main input[type="checkbox"]:after{
+    display: block;
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: -2px;
+    left: 0px
+}
+
+.list .extension .inofs .ext_info .main input[type="checkbox"]:checked:after{
+    background: #12756c;
+    left: calc(100% - 16px)
+}
+
+.list .extension .inofs .ext_info .main input[type="checkbox"].enabled:after{
+    position: absolute;
+    animation: enable_after 100ms ease-in forwards running
+}
+
+@keyframes enable_after{
+    0%{
+        background: #FFFFFF;
+        left: 0px;
+    }
+    100%{
+       background: #12756c; 
+       left: calc(100% - 16px);
+    }  
+}
+
+.list .extension .inofs .ext_info .main input[type="checkbox"].disabled:after{
+    position: absolute;
+    animation: disable_after 100ms ease-in forwards running
+}
+
+@keyframes disable_after{
+    0%{
+       background: #12756c; 
+       left: calc(100% - 16px);
+    }
+    100%{
+       background: #FFFFFF;
+        left: 0px;
+    }  
+}
+
+.list .extension .links{
+    padding-right: 10px;
+    margin-top: 7px;
+    height: 25px;
+}
+
+.list .extension .links button{
+    display: block;
+    float: right;
+    height: 100%;
+    margin-right: 15px;
+    padding: 0 10px;
+    background: #FFFFFF;
+    border-radius: 2px;
+    border: 1px solid #BDC0C7;
+    font-family: 'source sans pro', Helvetica, sans-serif;
+    text-transform: capitalize;
+    font-size: 12px;
+    font-weight: 700;
+    color: #12756c;
+    cursor: pointer;
+    outline: none;
+    transition: all 100ms ease-in forwards
+}
+
+.list .extension .links button:hover{
+    background: #4285f40a;
+    border-color: #12756c;
+}
+
+.list .extension .links button:first-child{
+    margin: 0px;
+    font-family: 'ropa sans', Helvetica, sans-serif;
+    color: #d25971;
+}
+
+.list .extension .links button:first-child:hover{
+    border-color: #d25971;
+}
+
+.copyrights{
+    display: block;
+    padding: 5px 10px;
+    font-family: 'ropa sans', Helvetica, sans-serif;
+    color: #212121;
+    font-size: 14px;
+    float: right
+}
+
+.copyrights a{
+    color: #69B1A9;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: color 150ms ease-in forwards
+}
+
+.copyrights a:hover{
+    color: #12756c
 }
