@@ -1,5 +1,5 @@
 # Chrome-Extensions-Manager
-A smart chrome extensions manager, to manage your extensions directly from any chrome window.
+A chrome extension to manage your extensions.
 
 ## Installation
 You have to install it manually<br>
